@@ -1,9 +1,7 @@
-//! Substrate Parachain Node Template CLI
-
+//! Substrate Node Template CLI library.
 #![warn(missing_docs)]
 
-use polkadot_sdk::*;
-
+mod benchmarking;
 mod chain_spec;
 mod cli;
 mod command;

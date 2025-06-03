@@ -25,29 +25,41 @@ git clone https://github.com/quantumos-tech/os
 cd os
 
 # Build runtime
-cargo build --release
+cargo build
 
 ```
 
-## Development Tools
+After you build the project, you can use the following command to explore its parameters and subcommands:
 
-Chain Spec
 
 ```
-cargo install staging-chain-spec-builder
-
-chain-spec-builder create \
-  --relay-chain "rococo-local" \
-  --para-id 1000 \
-  --runtime target/release/wbuild/parachain-template-runtime/parachain_template_runtime.wasm \
-  named-preset development
+./target/debug/quantumos-node  -h
 
 ```
 
-Run Locally with Omni Node
+## Single-Node Development Chain
+
+The following command starts a single-node development chain that doesn't persist state:
 
 ```
-cargo install polkadot-omni-node
-polkadot-omni-node --chain path/to/chain_spec.json --dev
+./target/debug/quantumos-node  --dev
 
 ```
+
+To purge the development chain's state, run the following command:
+
+```
+./target/debug/quantumos-node  purge-chain --dev
+
+```
+
+To start the development chain with detailed logging, run the following command:
+
+
+```
+RUST_BACKTRACE=1 ./target/debug/quantumos-node -ldebug --dev
+Development chains:
+```
+
+
+
